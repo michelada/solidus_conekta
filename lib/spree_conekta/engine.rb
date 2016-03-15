@@ -24,11 +24,15 @@ module SpreeConekta
     end
 
     initializer "spree.gateway.payment_methods", after: "spree.register.payment_methods" do |app|
-      app.config.spree.payment_methods << Spree::BillingIntegration::Conekta
-      app.config.spree.payment_methods << Spree::BillingIntegration::Conekta::Cash
-      app.config.spree.payment_methods << Spree::BillingIntegration::Conekta::Card
-      app.config.spree.payment_methods << Spree::BillingIntegration::Conekta::Bank
-      app.config.spree.payment_methods << Spree::BillingIntegration::Conekta::MonthlyPayment
+      app.config.spree.payment_methods << Spree::BillingIntegration::ConektaGateway
+      app.config.spree.payment_methods << Spree::BillingIntegration::ConektaGateway::Cash
+      app.config.spree.payment_methods << Spree::BillingIntegration::ConektaGateway::Card
+      app.config.spree.payment_methods << Spree::BillingIntegration::ConektaGateway::Bank
+      app.config.spree.payment_methods << Spree::BillingIntegration::ConektaGateway::MonthlyPayment
+    end
+
+    initializer 'spree_conekta.assets.precompile' do |app|
+      app.config.assets.precompile += %w( spree/backend/print.css )
     end
 
     config.to_prepare &method(:activate).to_proc

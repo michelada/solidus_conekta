@@ -9,7 +9,7 @@ Setup
 Add this extension to your Gemfile:
 
 ```ruby
-gem 'spree_conekta', github: 'AgilTec/spree_conekta', branch: '2.4.0.rc3'
+gem 'spree_conekta', github: 'conekta/spree_conekta', branch: '3-0-stable'
 ```
 
 Then run:
@@ -21,7 +21,7 @@ rails g spree_conekta:install
 
 ##Setup Conekta Payments
 
-1. You need to go to [Conekta](https://www.conekta.io/), create an account and retrieve your public api key.
+1. You need to go to [Conekta](https://www.conekta.io/), create an account and retrieve your private and public api keys.
 
 2. On the spree application admin side go to:
 ```
@@ -30,15 +30,16 @@ rails g spree_conekta:install
 
 3. In the provider box,choose one of the following options depending on your needs:
 
-        Spree::BillingIntegration::Conekta::Card
+        Spree::BillingIntegration::ConektaGateway::Card
 
-        Spree::BillingIntegration::Conekta::Cash
+        Spree::BillingIntegration::ConektaGateway::Cash
 
-        Spree::BillingIntegration::Conekta::Bank
+        Spree::BillingIntegration::ConektaGateway::Bank
 
-        Spree::BillingIntegration::Conekta::MonthlyPayment
+        Spree::BillingIntegration::ConektaGateway::MonthlyPayment
 
-4. On the auth token field, add your Conekta public key:
+4. On the auth token field, add your Conekta private key.
+5. On the public auth token field, add your Conekta public private key.
 
 ###Source Methods
 

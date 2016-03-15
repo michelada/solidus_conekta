@@ -1,5 +1,5 @@
 module Spree
-  class BillingIntegration::Conekta::Cash < Gateway
+  class BillingIntegration::ConektaGateway::Cash < Gateway
     preference :auth_token, :string
     preference :source_method, :string, default: 'cash'
 
